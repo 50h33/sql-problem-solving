@@ -1,6 +1,7 @@
 ### 문제
 - https://school.programmers.co.kr/learn/courses/30/lessons/59042
 - https://school.programmers.co.kr/learn/courses/30/lessons/131124
+- https://school.programmers.co.kr/learn/courses/30/lessons/276035
 
 ### 한 테이블에만 있는 데이터 찾기
 - https://school.programmers.co.kr/learn/courses/30/lessons/59042
@@ -35,3 +36,21 @@ where r.member_id = (
     limit 1
 )
 ```
+
+### join의 on 절에서 비트 연산자 사용
+- https://school.programmers.co.kr/learn/courses/30/lessons/276035
+
+```sql
+select distinct d.id, d.email, d.first_name, d.last_name
+from developers as d
+join skillcodes as s
+on d.skill_code & s.code > 0
+where s.category = 'Front End'
+order by d.id
+```
+
+- 위 쿼리는 `developers` 테이블과 `skillcodes` 테이블을 조인할 때, `skill_code`와 `code`의 비트 연산 결과가 0보다 큰 경우에만 조인하는 조건을 사용한다.
+- 이는 개발자의 스킬 코드와 스킬 코드 테이블의 코드가 겹치는 부분이 있는 경우를 찾는 데 사용된다.
+
+**주의할 점**
+- 어떤 한 명이 'Front End' 스킬을 여러 개 가지고 있을 수 있기 때문에 `distinct` 키워드를 사용하여 중복된 개발자 정보를 제거해야 한다.
