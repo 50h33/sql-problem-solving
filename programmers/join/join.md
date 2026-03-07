@@ -1,5 +1,6 @@
 ### 문제
 - https://school.programmers.co.kr/learn/courses/30/lessons/59042
+- https://school.programmers.co.kr/learn/courses/30/lessons/131124
 
 ### 한 테이블에만 있는 데이터 찾기
 - https://school.programmers.co.kr/learn/courses/30/lessons/59042
@@ -21,3 +22,16 @@ where i.animal_id is null
 | INNER JOIN | 둘 다 존재 | 제외   |
 | LEFT JOIN  | 왼쪽     | NULL |
 | RIGHT JOIN | 오른쪽    | NULL |
+
+### 리뷰를 가장 많이 작성한 회원 필터링
+- https://school.programmers.co.kr/learn/courses/30/lessons/131124
+
+```sql
+where r.member_id = (
+    select member_id
+    from rest_review
+    group by member_id
+    order by count(*) desc
+    limit 1
+)
+```
