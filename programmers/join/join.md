@@ -54,3 +54,22 @@ order by d.id
 
 **주의할 점**
 - 어떤 한 명이 'Front End' 스킬을 여러 개 가지고 있을 수 있기 때문에 `distinct` 키워드를 사용하여 중복된 개발자 정보를 제거해야 한다.
+
+### distinct 키워드, round 함수, subquery 활용
+- https://school.programmers.co.kr/learn/courses/30/lessons/131534
+
+```sql
+select
+    year(o.sales_date) as year,
+    month(o.sales_date) as month,
+    count(distinct o.user_id) as purchased_users,
+    round(
+        count(distinct o.user_id) / 
+        (
+            select count(*)
+            from user_info
+            where year(joined) = 2021
+        ),
+        1
+        ) as purchased_ratio
+```
