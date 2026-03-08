@@ -2,6 +2,7 @@
 - https://school.programmers.co.kr/learn/courses/30/lessons/157342
 - https://school.programmers.co.kr/learn/courses/30/lessons/59046
 - https://school.programmers.co.kr/learn/courses/30/lessons/59409
+- https://school.programmers.co.kr/learn/courses/30/lessons/131529
 
 ### datediff(END_DATE, START_DATE)
 - https://school.programmers.co.kr/learn/courses/30/lessons/157342
@@ -43,3 +44,10 @@ where name in ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
 - https://school.programmers.co.kr/learn/courses/30/lessons/59409
 - LIKE : 패턴 매칭
 - IN : 정확한 값 비교
+
+### SUBSTRING(문자열, 시작위치, 길이)
+- https://school.programmers.co.kr/learn/courses/30/lessons/131529
+  
+```sql
+substring(PRODUCT_CODE, 1, 2)
+```
