@@ -4,6 +4,7 @@
 - https://school.programmers.co.kr/learn/courses/30/lessons/59409
 - https://school.programmers.co.kr/learn/courses/30/lessons/131529
 - https://school.programmers.co.kr/learn/courses/30/lessons/284530
+- https://school.programmers.co.kr/learn/courses/30/lessons/299308
 
 ### datediff(END_DATE, START_DATE)
 - https://school.programmers.co.kr/learn/courses/30/lessons/157342
@@ -65,3 +66,27 @@ substring(PRODUCT_CODE, 1, 2)
 
 - `&`는 비트 연산자로, 두 숫자의 각 비트를 비교하여 둘 다 1인 경우에만 1을 반환합니다. 주로 비트마스크 연산에 사용됩니다.
 - `&&`와 `AND`는 모두 논리 연산자로, 조건식에서 사용됩니다. MySQL에서는 `AND`가 더 일반적으로 사용되며, `&&`도 동일한 기능을 수행하지만 가독성 측면에서 `AND`를 사용하는 것이 권장됩니다.
+
+### QUARTER(날짜)
+- https://school.programmers.co.kr/learn/courses/30/lessons/299308
+- `QUARTER()` 함수는 주어진 날짜가 속한 분기를 반환합니다. 반환값은 1, 2, 3, 4 중 하나입니다.
+
+### only full group by
+- https://school.programmers.co.kr/learn/courses/30/lessons/299308
+- MySQL에서 `ONLY_FULL_GROUP_BY` 모드는 `GROUP BY` 절에서 명시적으로 그룹화된 열만 선택할 수 있도록 강제하는 SQL 모드입니다. 이 모드가 활성화되어 있으면, `GROUP BY` 절에 포함되지 않은 열을 `SELECT` 절에서 사용할 때 오류가 발생합니다. 따라서, `GROUP BY` 절에 모든 선택된 열을 포함하거나 집계 함수를 사용하여야 합니다.
+
+```sql
+select concat(quarter(DIFFERENTIATION_DATE), 'Q') as QUARTER
+from ECOLI_DATA
+group by concat(quarter(DIFFERENTIATION_DATE), 'Q')
+```
+
+- 위와 같이 `GROUP BY` 절에 `concat(quarter(DIFFERENTIATION_DATE), 'Q')`를 포함하여 그룹화된 열을 명시적으로 지정해야 합니다.
+
+```sql
+select concat(quarter(DIFFERENTIATION_DATE), 'Q') as QUARTER
+from ECOLI_DATA
+group by quarter(DIFFERENTIATION_DATE)
+```
+
+- 위와 같이 `GROUP BY` 절에 `quarter(DIFFERENTIATION_DATE)`만을 포함하는 경우 오류가 발생할 수 있습니다. 따라서, `GROUP BY` 절에 `concat(quarter(DIFFERENTIATION_DATE), 'Q')`를 포함하여 그룹화된 열을 명시적으로 지정해야 합니다.
