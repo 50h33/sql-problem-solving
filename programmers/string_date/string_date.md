@@ -1,6 +1,7 @@
 ### 문제
 - https://school.programmers.co.kr/learn/courses/30/lessons/157342
 - https://school.programmers.co.kr/learn/courses/30/lessons/59046
+- https://school.programmers.co.kr/learn/courses/30/lessons/59409
 
 ### datediff(END_DATE, START_DATE)
 - https://school.programmers.co.kr/learn/courses/30/lessons/157342
@@ -37,3 +38,8 @@ where name in ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
   - 예약어와 충돌할 때
   - 컬럼 이름에 특수문자 / 공백
   - 대소문자 유지
+
+### like vs in
+- https://school.programmers.co.kr/learn/courses/30/lessons/59409
+- LIKE : 패턴 매칭
+- IN : 정확한 값 비교
