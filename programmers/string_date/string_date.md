@@ -5,6 +5,7 @@
 - https://school.programmers.co.kr/learn/courses/30/lessons/131529
 - https://school.programmers.co.kr/learn/courses/30/lessons/284530
 - https://school.programmers.co.kr/learn/courses/30/lessons/299308
+- https://school.programmers.co.kr/learn/courses/30/lessons/131113
 
 ### datediff(END_DATE, START_DATE)
 - https://school.programmers.co.kr/learn/courses/30/lessons/157342
@@ -90,3 +91,25 @@ group by quarter(DIFFERENTIATION_DATE)
 ```
 
 - 위와 같이 `GROUP BY` 절에 `quarter(DIFFERENTIATION_DATE)`만을 포함하는 경우 오류가 발생할 수 있습니다. 따라서, `GROUP BY` 절에 `concat(quarter(DIFFERENTIATION_DATE), 'Q')`를 포함하여 그룹화된 열을 명시적으로 지정해야 합니다.
+
+### case when then else end
+- https://school.programmers.co.kr/learn/courses/30/lessons/131113
+- when 절을 여러 번 사용하여 여러 조건을 처리할 수 있습니다.
+
+```sql
+case
+    when OUT_DATE <= '2022-05-01' then '출고완료'
+    when OUT_DATE is null then '출고미정'
+    else '출고대기'
+end as 출고여부
+```
+
+### 주어진 날짜가 '년-월-일' 형태이고, 출력 형태도 '년-월-일' 형태로 유지해야 할 때
+- https://school.programmers.co.kr/learn/courses/30/lessons/131113
+
+```sql
+date_format(OUT_DATE, '%Y-%m-%d') as OUT_DATE
+```
+
+- `DATE_FORMAT()` 함수를 사용하여 날짜를 원하는 형식으로 출력할 수 있습니다. 위 예시에서는 '년-월-일' 형태로 출력하도록 지정하였습니다.
+- `DATE_FORMAT()` 함수를 사용하지 않으면 '시:분:초'가 포함된 형태로 출력될 수 있습니다.
