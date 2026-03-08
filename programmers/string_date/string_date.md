@@ -6,6 +6,7 @@
 - https://school.programmers.co.kr/learn/courses/30/lessons/284530
 - https://school.programmers.co.kr/learn/courses/30/lessons/299308
 - https://school.programmers.co.kr/learn/courses/30/lessons/131113
+- https://school.programmers.co.kr/learn/courses/30/lessons/151141
 
 ### datediff(END_DATE, START_DATE)
 - https://school.programmers.co.kr/learn/courses/30/lessons/157342
@@ -113,3 +114,17 @@ date_format(OUT_DATE, '%Y-%m-%d') as OUT_DATE
 
 - `DATE_FORMAT()` 함수를 사용하여 날짜를 원하는 형식으로 출력할 수 있습니다. 위 예시에서는 '년-월-일' 형태로 출력하도록 지정하였습니다.
 - `DATE_FORMAT()` 함수를 사용하지 않으면 '시:분:초'가 포함된 형태로 출력될 수 있습니다.
+
+### 대여 기간을 다른 테이블의 DURATION_TYPE에 맞춰야 할 때
+- https://school.programmers.co.kr/learn/courses/30/lessons/151141
+
+```sql
+from CAR_RENTAL_COMPANY_RENTAL_HISTORY as h
+join CAR_RENTAL_COMPANY_CAR as c on h.CAR_ID = c.CAR_ID
+left join CAR_RENTAL_COMPANY_DISCOUNT_PLAN as p on c.CAR_TYPE = p.CAR_TYPE and
+    p.DURATION_TYPE =  case 
+                            when datediff(h.END_DATE, h.START_DATE) + 1 >= 90 then '90일 이상'
+                            when datediff(h.END_DATE, h.START_DATE) + 1 >= 30 then '30일 이상'
+                            when datediff(h.END_DATE, h.START_DATE) + 1 >= 7 then '7일 이상'
+                        end
+```
