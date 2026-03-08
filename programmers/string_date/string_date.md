@@ -3,6 +3,7 @@
 - https://school.programmers.co.kr/learn/courses/30/lessons/59046
 - https://school.programmers.co.kr/learn/courses/30/lessons/59409
 - https://school.programmers.co.kr/learn/courses/30/lessons/131529
+- https://school.programmers.co.kr/learn/courses/30/lessons/284530
 
 ### datediff(END_DATE, START_DATE)
 - https://school.programmers.co.kr/learn/courses/30/lessons/157342
@@ -33,11 +34,12 @@ where name in ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
 
 ### 작은 따옴표 vs 큰 따옴표 vs 백틱
 - https://school.programmers.co.kr/learn/courses/30/lessons/59046
+- https://school.programmers.co.kr/learn/courses/30/lessons/284530
 - 문자열 → ' ' (작은 따옴표) 사용
   - 큰 따옴표도 MySQL에서 문자열을 감싸는 데 사용할 수 있지만, 일반적으로 SQL 표준에서는 작은 따옴표를 사용하여 문자열을 감싸는 것이 권장됩니다.
 - 테이블명, 컬럼명 같은 식별자를 감쌀 때 → ` ` (백틱) 사용
   - 예약어와 충돌할 때
-  - 컬럼 이름에 특수문자 / 공백
+  - 컬럼 이름에 특수문자 / . / 공백 → 예) `PM2.5`
   - 대소문자 유지
 
 ### like vs in
@@ -51,3 +53,15 @@ where name in ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
 ```sql
 substring(PRODUCT_CODE, 1, 2)
 ```
+
+### & vs && vs AND
+- https://school.programmers.co.kr/learn/courses/30/lessons/284530
+
+| 연산자   | 의미     | 사용 목적 |
+| ----- | ------ | ----- |
+| `&`   | 비트 AND | 비트마스크 |
+| `&&`  | 논리 AND | 조건식   |
+| `AND` | 논리 AND | 조건식   |
+
+- `&`는 비트 연산자로, 두 숫자의 각 비트를 비교하여 둘 다 1인 경우에만 1을 반환합니다. 주로 비트마스크 연산에 사용됩니다.
+- `&&`와 `AND`는 모두 논리 연산자로, 조건식에서 사용됩니다. MySQL에서는 `AND`가 더 일반적으로 사용되며, `&&`도 동일한 기능을 수행하지만 가독성 측면에서 `AND`를 사용하는 것이 권장됩니다.
